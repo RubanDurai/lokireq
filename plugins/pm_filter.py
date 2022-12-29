@@ -770,7 +770,7 @@ async def auto_filter(client, msg, spoll=False):
             image = "https://telegra.ph/file/aafe62b4d442f7aceea20.jpg"
             fmsg = await message.reply_photo(photo=image, caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
     else:
-         image = "https://telegra.ph/file/aafe62b4d442f7aceea20.jpg"
+         image = "https://telegra.ph/file/a838273c2a182cd436067.jpg"
         fmsg = await message.reply_photo(photo=image, caption=cap, reply_markup=InlineKeyboardMarkup(btn))
     if spoll:
        
