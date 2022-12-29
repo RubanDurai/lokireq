@@ -767,18 +767,16 @@ async def auto_filter(client, msg, spoll=False):
             fmsg = await message.reply_photo(photo=poster, caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
         except Exception as e:
             logger.exception(e)
-            image = "https://telegra.ph/file/aafe62b4d442f7aceea20.jpg"
+            image = "https://telegra.ph/file/329bd4dae3fb88fa8aa30.jpg"
             fmsg = await message.reply_photo(photo=image, caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
     else:
-         image = "https://telegra.ph/file/a838273c2a182cd436067.jpg"
+        image = "https://telegra.ph/file/329bd4dae3fb88fa8aa30.jpg"
         fmsg = await message.reply_photo(photo=image, caption=cap, reply_markup=InlineKeyboardMarkup(btn))
     if spoll:
-       
-    await asyncio.sleep(900)
-    await fmsg.delete()
-    
-    if spoll:
         await msg.message.delete()
+
+    scheduler.add_job(fmsg.delete, trigger="date", run_date=datetime.datetime.now() + datetime.timedelta(seconds=AUTO_DELETE))
+
 
 
 async def advantage_spell_chok(msg):
